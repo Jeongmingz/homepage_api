@@ -13,6 +13,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.staticfiles',
     'rest_framework',
+
+    'user',
+    'insta'
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+AUTH_USER_MODEL = 'user.Users'
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
