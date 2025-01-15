@@ -6,7 +6,6 @@ class BaseLoginModel(models.Model):
 	updated_at = models.DateTimeField(auto_now=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 
-
 	class Meta:
 		abstract = True
 
@@ -14,7 +13,6 @@ class BaseLoginModel(models.Model):
 class BaseTimeModel(models.Model):
 	created_at = models.DateTimeField(auto_now=True)
 	updated_at = models.DateTimeField(auto_now=True)
-
 
 	class Meta:
 		abstract = True
@@ -36,4 +34,30 @@ class Insta(BaseLoginModel):
 	)
 
 	IP = models.GenericIPAddressField()
+
+
+class InstaFuncType(models.Model):
+	type = models.CharField(
+		max_length=120,
+		unique=True
+		)
+
+	description = models.TextField()
+
+
+class InstaHistory(BaseTimeModel):
+	type = models.ForeignKey(
+		InstaFuncType,
+		on_delete=models.CASCADE
+		)
+
+	query = models.JSONField(
+		default=dict,
+		)
+
+	insta = models.ForeignKey(
+		Insta,
+		on_delete=models.DO_NOTHING
+		)
+
 

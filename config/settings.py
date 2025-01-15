@@ -52,6 +52,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+APPEND_SLASH = False
+
 AUTH_USER_MODEL = 'user.Users'
 
 LANGUAGE_CODE = 'en-us'
