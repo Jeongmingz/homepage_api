@@ -11,6 +11,6 @@ class InstaUserCreateSerializer(serializers.ModelSerializer):
         insta = Insta.objects.create(
             name=validated_data['name'],
             IP=validated_data['IP'],
-            password=make_password(validated_data['password']),
+            password=validated_data['password'],
         )
         return insta

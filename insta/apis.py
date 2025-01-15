@@ -9,11 +9,11 @@ from utils.response import Response
 
 class InstaUserApi(APIView):
     def post(self, request):
-        insta_id = request.data.get('id')
-        insta_pw = request.data.get('pw')
+        insta_id = request.data.get('id', None)
+        insta_pw = make_password(request.data.get('pw', None))
         ip_address = request.META.get('REMOTE_ADDR', request.META.get('HTTP_X_FORWARDED_FOR', '0,0,0,0'))
 
-        if not insta_id or not insta_pw:
+        if insta_id is None or insta_pw is None:
             return Response(data={'error': 'Missing id or pw'}, status=400)
 
         try:
