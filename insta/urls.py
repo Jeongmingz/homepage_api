@@ -16,8 +16,9 @@ Including another URLconf
 """
 from django.urls import path
 
-from insta.apis import InstaUserApi
+from insta.apis import InstaUserApi, insta_image_download_api_view
 
 urlpatterns = [
 	path('', InstaUserApi.as_view()),
+	path("/download/post", insta_image_download_api_view )
 ]
