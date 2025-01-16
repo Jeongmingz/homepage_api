@@ -1,11 +1,11 @@
-from rest_framework.response import Response
+from django.http import JsonResponse
 from rest_framework import status
 
 # 예시: SystemCodeManager는 프로젝트 특성에 맞춰 자유롭게 작성/수정
 from utils.constants import SystemCodeManager
 
 
-class CustomResponse(Response):
+class CustomResponse(JsonResponse):
 	def __init__(self, data=None, **kwargs):
 		http_status = kwargs.pop("status", status.HTTP_200_OK)
 
@@ -24,6 +24,15 @@ class CustomResponse(Response):
 
 		# Response의 초기화는 최종 payload와 kwargs를 넘겨줍니다.
 		super().__init__(payload, status=http_status, **kwargs)
+
+	def set_cookie(self, key, value, **options):
+		"""
+		Wrapper for setting a cookie on the response.
+		"""
+		self.cookies[key] = value
+		for option_key, option_value in options.items():
+			setattr(self.cookies[key], option_key, option_value)
+
 
 def Response(**kwargs):
 	"""

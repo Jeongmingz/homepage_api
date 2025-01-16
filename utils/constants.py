@@ -45,6 +45,16 @@ class SystemCodeManager:
 			"code": "INSTA_LOGIN_FAILED",
 			"link": None,
 			"message": "인스타그램 로그인 실패. 아이디와 비밀번호를 확인하세요."
+			},
+		491: {
+			"code": "INSTA_UNAUTHORIZED",
+			"link": None,
+			"message": "인스타그램 로그인을 해주세요."
+			},
+		494: {
+			"code": "INSTA_POST_URL_ERROR",
+			"link": None,
+			"message": "POST URL이 유효하지 않습니다."
 			}
 		}
 
